@@ -1,8 +1,8 @@
 ### cookie 实现单点登录
 
 基于knighjxnu的BaseSpring实现
+
 https://github.com/Knight-JNXU/SpringStudy/tree/BaseSpring
-//todo cookie 将使用 CookieAccessor优化
 
 ### Spring 模板
 
