@@ -46,7 +46,7 @@ public class LoginController extends BaseController{
      * @param model
      * @return
      */
-    @RequestMapping(value="/goLogin", method=RequestMethod.GET)
+    @RequestMapping(value="/go/login", method=RequestMethod.GET)
     public String goLogin(HttpServletRequest request, HttpServletResponse response, Model model) {
         return "login/login";
     }
@@ -66,15 +66,13 @@ public class LoginController extends BaseController{
         
         LOGGER.info("loginname{},password{}", loginname, password);
         
-        Cookie userCookie = CookieUtil.getCookie(request, USERNAME);
-        if(Validator.isNotNullOrEmpty(userCookie) && userCookie.getValue().equals(loginname)) {
+        String loginedName = userCookiePersister.getValue(request, response);
+        if(Validator.isNotNullOrEmpty(loginedName) && loginedName.equals(loginname)) {
             result = (loginname+" has logined!");
         }else {
             userCookiePersister.setValue(loginname, request, response);
             result = (loginname+" login success!");
         }
-        
-        
         
         return result;
     }
