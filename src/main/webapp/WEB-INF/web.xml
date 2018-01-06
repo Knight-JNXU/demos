@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
-	<display-name>BaseSpring</display-name>
+	<display-name>CookieSingleSign</display-name>
 
 	<!-- 指定首页 -->
 	<welcome-file-list>
