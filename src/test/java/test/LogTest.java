@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
  * @author knightjxnu
  * @version 1.0
  * @date 2018年1月15日
- * @function : 
+ * @function : 测试log是否引用成功
  */
 public class LogTest{
     
