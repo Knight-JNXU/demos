@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	  <property name="location">
+	    <value>joke.properties</value>
+	  </property>
+	</bean>
+
+	笑话大全接口参数
+	<bean id="jokeRequestParams" class="code.model.RequestParams" scope="prototype">
+		<property name="url" value="${joke.url}"/>
+		<property name="paramsMap">  
+	      	<map>  
+	        	<entry key="sort" value="${joke.sort}"/>  
+	        	<entry key="pagesize" value="${joke.pagesize}"/>  
+	        	<entry key="key" value="${joke.key}"/>  
+	      	</map>  
+	  	</property>  
+	</bean> -->
+
+</beans>
