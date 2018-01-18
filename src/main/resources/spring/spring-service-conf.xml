@@ -12,28 +12,12 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         ">
 	
-	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-	  <property name="location">
-	    <value>joke.properties</value>
-	  </property>
-	</bean> -->
 	<util:properties id="joke"
 		location="classpath:joke.properties"></util:properties>
 
-	<!-- 笑话大全接口参数 -->
-	<!-- <bean id="jokeRequestParams" class="code.model.RequestParams" scope="prototype">
-		<property name="url" value="${joke.url}"/>
-		<property name="paramsMap">  
-	      	<map>  
-	        	<entry key="sort" value="${joke.sort}"/>  
-	        	<entry key="pagesize" value="${joke.pagesize}"/>  
-	        	<entry key="key" value="${joke.key}"/>  
-	      	</map>  
-	  	</property>  
-	</bean> -->
-	<bean id="jokeRequestParams" class="code.model.RequestParams" scope="prototype">
-		<property name="url" value="#{joke['joke.url']}"/>
-		<property name="paramsMap">  
+	<bean id="jokeRequestParams" class="com.feilong.net.entity.HttpRequest" scope="prototype">
+		<property name="uri" value="#{joke['joke.url']}"/>
+		<property name="paramMap">  
 	      	<map>  
 	        	<entry key="sort" value="#{joke['joke.sort']}"/>  
 	        	<entry key="pagesize" value="#{joke['joke.pagesize']}"/>  

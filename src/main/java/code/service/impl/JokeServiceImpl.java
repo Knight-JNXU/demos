@@ -1,6 +1,7 @@
 package code.service.impl;
 
 import java.util.Date;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.feilong.net.entity.HttpRequest;
 import com.feilong.net.httpclient4.HttpClientUtil;
 
-import code.model.RequestParams;
 import code.service.JokeService;
 
 /**
@@ -27,7 +28,7 @@ public class JokeServiceImpl extends BaseServiceImpl implements JokeService{
 
     @Autowired
     @Qualifier(value = "jokeRequestParams")
-    private RequestParams httpRequest;
+    private HttpRequest httpRequest;
 
     /**
      * 根据页码获取笑话
@@ -37,7 +38,11 @@ public class JokeServiceImpl extends BaseServiceImpl implements JokeService{
      * @return
      */
     public String getJokesByPage(String page){
-        String requestUrl = httpRequest.buildeCompleteUrl(page, "" + (new Date().getTime() / 1000));
+        Map<String, String> paramMap = httpRequest.getParamMap();
+        paramMap.put("page", page);
+        paramMap.put("time", "" + (new Date().getTime() / 1000));
+        String requestUrl = httpRequest.getFullEncodedUrl();
+//        String requestUrl = httpRequest.buildeCompleteUrl(page, "" + (new Date().getTime() / 1000));
         String responseStr = HttpClientUtil.get(requestUrl);
         LOGGER.info("聚合数据：笑话大全：request:{},response:{}", requestUrl, responseStr);
         return responseStr;
