@@ -61,7 +61,7 @@ public class RequestParams extends BaseModel{
      */
     public String buildeCompleteUrl(String page, String time) {
         String result = "";
-        result += (url+URIComponents.QUESTIONMARK+ParamUtil.toQueryStringUseSingleValueMap(paramsMap)+"page="+page+URIComponents.AMPERSAND+"time="+time);
+        result += (url+URIComponents.QUESTIONMARK+ParamUtil.toQueryStringUseSingleValueMap(paramsMap)+"?page="+page+URIComponents.AMPERSAND+"time="+time);
         return result;
     }
 }
