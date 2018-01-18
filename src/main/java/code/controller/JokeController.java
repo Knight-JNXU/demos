@@ -26,7 +26,7 @@ public class JokeController extends BaseController{
     
     @ResponseBody
     @RequestMapping("/joke/list.json")
-    public String getJokeListJson(@RequestParam(value="page", required=false, defaultValue="1") String page, @RequestParam(value="password") String password, HttpServletRequest request, HttpServletResponse response, Model model){
+    public String getJokeListJson(@RequestParam(value="page", required=false, defaultValue="1") String page, HttpServletRequest request, HttpServletResponse response, Model model){
         return jokeService.getJokesByPage(page);
     }
 }
