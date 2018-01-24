@@ -132,8 +132,8 @@ public class FileCore{
         Pattern pattern = Pattern.compile(patternStr);
         for (File file : fileList){
             Matcher matcher = pattern.matcher(file.getAbsolutePath());
-            while (matcher.find()){
-                BussinessFile bussinessFile = new BussinessFile(matcher.group(), file);
+            if (matcher.find()){
+                BussinessFile bussinessFile = new BussinessFile(matcher.group(1), file);
                 bussinessFileList.add(bussinessFile);
             }
         }

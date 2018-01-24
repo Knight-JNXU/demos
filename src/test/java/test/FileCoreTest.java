@@ -110,10 +110,7 @@ public class FileCoreTest{
     */
     @Test
     public void testFileCoreTest(){
-//        List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern("D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend", allPicExtensionPattern, ".+(\\\\images\\\\.+\\.jpg)$");
-//	List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern("D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend", allPicExtensionPattern, ".+(\\\\images\\\\.+\\.jpg)$");
-//	List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern(directory, ".+(.jpg|.JPG|.jpeg|.JPEG|.png|.PNG|.gig|.GIF)$", ".+(\\images\\.+\\.jpg)$");
-	List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern(directory, ".+(.jpg|.JPG|.jpeg|.JPEG|.png|.PNG|.gig|.GIF)$", "(/images/)([^.]+)(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF)");
+	List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern("D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend\\src\\main\\webapp\\images\\biofuse", ".+(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF)$", ".+(\\\\images\\\\.+(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF))$");
         PrintUtil.printBussinessFileSetAbsolutePath(filePartialPathByDirectoryPattern);
     }
     

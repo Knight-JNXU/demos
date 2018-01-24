@@ -37,9 +37,11 @@ public class PatternTest{
     */
     @Test
     public void getStringByPatternTest(){
-        LOGGER.info(fileName);
-        Pattern pattern = Pattern.compile(".+(\\\\images\\\\.+\\.jpg)$");
-        Matcher matcher = pattern.matcher(fileName);
+	String tempFileName = "D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend\\src\\main\\webapp\\images\\biofuse\\img-1.JPG";
+        LOGGER.info(tempFileName);
+//        "(/images/)([^.]+)(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF)"
+        Pattern pattern = Pattern.compile(".+(\\\\images\\\\.+(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF))$");
+        Matcher matcher = pattern.matcher(tempFileName);
         if(matcher.find()) {
             LOGGER.info(matcher.group(1));
         }
@@ -139,5 +141,6 @@ public class PatternTest{
            System.out.println("NO MATCH");
         }
     }
+    
     
 }
