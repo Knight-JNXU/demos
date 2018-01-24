@@ -1,7 +1,5 @@
 package test;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.feilong.core.util.SortUtil;
-import com.feilong.json.jsonlib.JsonUtil;
 
 import core.BussinessFile;
 import core.FileCore;
@@ -47,7 +44,7 @@ public class FileCoreTest{
     
     /**
      * 验证是否有重复的文件
-     * @author liuwen
+     * @author knightjxnu
      */
     @Test
     public void getAllFilesFoldersInDirectoryTest(){
@@ -97,7 +94,8 @@ public class FileCoreTest{
     */
     @Test
     public void getFilesInDirectoryByPatternTest(){
-        String pattern = ".+(.jpg|.mp4|.JPG|.ico|.mov|.gif|.png|.webm)$";
+//        String pattern = ".+(.jpg|.mp4|.JPG|.ico|.mov|.gif|.png|.webm)$";
+        String pattern = ".+(.jpg)$";
         List<File> filesInDirectoryByPattern = FileCore.getFilesInDirectoryByPattern(directory, pattern);
         FileCore.printFileListAbsolutePath(filesInDirectoryByPattern);
     }

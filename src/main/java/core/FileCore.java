@@ -26,7 +26,7 @@ public class FileCore{
     
     /**
      * 递归遍历文件
-     * @author liuwen
+     * @author knightjxnu
      * @param directory
      * @param fileFolderList
      */
@@ -56,7 +56,7 @@ public class FileCore{
     
     /**
      * 获取文件和文件夹
-     * @author liuwen
+     * @author knightjxnu
      * @param directory
      * @return
      */
@@ -69,7 +69,7 @@ public class FileCore{
     
     /**
      * 获取文件
-     * @author liuwen
+     * @author knightjxnu
      * @param directory
      * @return
      */
@@ -86,7 +86,7 @@ public class FileCore{
     
     /**
      * 提取文件名拓展名
-     * @author liuwen
+     * @author knightjxnu
      * @param directory
      * @return
      */
@@ -101,8 +101,8 @@ public class FileCore{
     }
     
     /**
-     * 根据正则表达式在某个目录下获取文件
-     * @author liuwen
+     * 在目录 directory 下获取文件绝对路径符合正则表达式 patternStr 的文件
+     * @author knightjxnu
      * @param directory
      * @param patternStr
      * @return
@@ -120,7 +120,7 @@ public class FileCore{
     
     /**
      * 提取某个路径下所有文件及其子文件的部分路径
-     * @author liuwen
+     * @author knightjxnu
      * @param directory
      * @param picExtensionPatternStr 图片后缀
      * @param patternStr 需要提取的路径正则
@@ -143,7 +143,7 @@ public class FileCore{
     
     /**
      * 输出文件绝对路径
-     * @author liuwen
+     * @author knightjxnu
      * @param fileList
      */
     public static void printFileListAbsolutePath(List<File> fileList) {
@@ -154,7 +154,7 @@ public class FileCore{
     
     /**
      * 输出bussinessFileList
-     * @author liuwen
+     * @author knightjxnu
      * @param bussinessFileList
      */
     public static void printBussinessFileListAbsolutePath(List<BussinessFile> bussinessFileList) {
@@ -162,7 +162,6 @@ public class FileCore{
             LOGGER.info(bussinessFile.toString());
         }
     }
-    
     
     
 }
