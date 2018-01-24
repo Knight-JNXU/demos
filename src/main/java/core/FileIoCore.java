@@ -63,14 +63,8 @@ public class FileIoCore{
             String fileContent = getFileContentByFile(file);
             Pattern contentPartten = Pattern.compile(contentParttenStr);
             Matcher contentMatcher = contentPartten.matcher(fileContent);
-            LOGGER.info("fileContent:{}", fileContent);
             while(contentMatcher.find()) {
                 conformContentSet.add(contentMatcher.group());
-//                LOGGER.info("contentMatcher.groupCount():{}", contentMatcher.groupCount());
-//                for(int i=1; i<contentMatcher.groupCount(); i++) {
-//                    LOGGER.info("contentMatcher.group(i):{}", contentMatcher.group(i));
-//                    conformContentSet.add(contentMatcher.group(i));
-//                }
             }
         }
         return conformContentSet;

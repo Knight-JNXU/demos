@@ -29,7 +29,7 @@ public class BussinessFile{
     // 文件大小默认显示格式
     private final DecimalFormat DEFAULT_FILE_SIZE_FORMAT = new DecimalFormat("0.000");
 
-    private final long SIZE_CONVERSION_COEFFICIENT_MEGABYTE = 1048576l;
+    private final long SIZE_CONVERSION_COEFFICIENT_MEGABYTE = 1024*1024L;
 
     // 初始化块
     {
@@ -42,6 +42,7 @@ public class BussinessFile{
     }
 
     public BussinessFile(String filePath, File file){
+	filePath = filePath.replace("\\", "/");
         this.filePath = filePath;
         this.file = file;
     }
@@ -77,10 +78,10 @@ public class BussinessFile{
     public void setSizeConversionCoefficient(long sizeConversionCoefficient){
         this.sizeConversionCoefficient = sizeConversionCoefficient;
     }
-
+    
     @Override
     public String toString(){
         return "BussinessFile [filePath = " + filePath + ", file.size= " + fileSizeFormat.format(new Double(FileUtil.getFileSize(file))/sizeConversionCoefficient) + " M]";
     }
-
+    
 }

@@ -119,7 +119,7 @@ public class FileCore{
     }
     
     /**
-     * 提取某个路径下所有文件及其子文件的部分路径
+     * 提取路径 directory 下所有 满足 picExtensionPatternStr 正则的文件、子文件绝对路径中符合 patternStr 正则的部分路径
      * @author knightjxnu
      * @param directory
      * @param picExtensionPatternStr 图片后缀
@@ -132,8 +132,8 @@ public class FileCore{
         Pattern pattern = Pattern.compile(patternStr);
         for (File file : fileList){
             Matcher matcher = pattern.matcher(file.getAbsolutePath());
-            if (matcher.find()){
-                BussinessFile bussinessFile = new BussinessFile(matcher.group(1), file);
+            while (matcher.find()){
+                BussinessFile bussinessFile = new BussinessFile(matcher.group(), file);
                 bussinessFileList.add(bussinessFile);
             }
         }

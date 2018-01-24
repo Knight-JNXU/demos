@@ -37,7 +37,7 @@ public class FileIoCoreTest{
     * TestFileIoCoreTest.
     */
     @Test
-    public void testFileIoCoreTest() throws Exception{
+    public void encodingDetectTest() throws Exception{
         String fileEncode=EncodingDetect.getJavaEncodeByFilePath("D:\\all\\code\\demos\\PictureReferenceProgram\\src\\main\\java\\core\\EncodingDetect.java");  
         LOGGER.info(fileEncode);
         String readFileToString = FileIoCore.getFileContentByAbsolutePath("D:\\all\\code\\demos\\PictureReferenceProgram\\src\\main\\java\\core\\EncodingDetect.java");
@@ -46,13 +46,13 @@ public class FileIoCoreTest{
     
     
     /**
-     * 
+     * 在 directory 下获取文件名符合 fileNamePartten 的文件，把 文件中符合 contentPartten 的字符串提取出来
      * @author knightjxnu
      * @throws Exception
      */
     @Test
     public void getContentInDirectoryTest() throws Exception{
-        Set<String> contentInDirectory = FileIoCore.getContentInDirectory("D:\\test", ".+(\\.jsp|\\.css)$", "(/images/)([^.]+)(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF)");
+	Set<String> contentInDirectory = FileIoCore.getContentInDirectory("D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend", ".+(\\.jsp|\\.css|\\.js)$", "(/images/)([^.]+)(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF)");
         if (LOGGER.isInfoEnabled()){
             LOGGER.info("contentInDirectory:{}", JsonUtil.format(contentInDirectory));
         }

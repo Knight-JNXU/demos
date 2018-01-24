@@ -14,6 +14,7 @@ import com.feilong.core.util.SortUtil;
 
 import core.BussinessFile;
 import core.FileCore;
+import core.PrintUtil;
 
 /**
  * @author knightjxnu
@@ -28,18 +29,20 @@ public class FileCoreTest{
     
     private String directory = "D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend\\src\\main\\webapp\\images";
     
+    private String frontedDirectory = "D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend\\src\\main\\webapp\\images";
+    
     private String allExtensionPattern = ".+(.jpg|.mp4|.JPG|.ico|.mov|.gif|.png|.webm)$";
     
     //所有图片拓展名
-    private String allPicExtensionPattern = ".+(.jpg|.JPG|.jpeg|.JPEG|.gif|.GIF|.png|.PNG)$";
+    private String allPicExtensionPattern = ".+(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.gif|\\.GIF|\\.png|\\.PNG)$";
     
     /**
     * TestCoreTest.
     */
     @Test
     public void fileTraversalRecursiveTest(){
-        List<File> fileFolderList = new ArrayList<>();
-        FileCore.fileTraversalRecursive(directory, fileFolderList);
+	List<File> fileFolderList = new ArrayList();
+        FileCore.fileTraversalRecursive("D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend", fileFolderList);
     }
     
     /**
@@ -48,7 +51,7 @@ public class FileCoreTest{
      */
     @Test
     public void getAllFilesFoldersInDirectoryTest(){
-        List<File> fileFolderList = FileCore.getAllFilesFoldersInDirectory(directory);
+	List<File> fileFolderList = FileCore.getAllFilesFoldersInDirectory(directory);
         List<String> fileFolderNameList = new ArrayList<>();
         Set<String> fileFolderNameSet = new HashSet<>();
         for (File file : fileFolderList){
@@ -56,7 +59,6 @@ public class FileCoreTest{
             fileFolderNameSet.add(file.getAbsolutePath());
         }
         LOGGER.info("fileFolderNameList.size():{}, fileFolderNameSet.size():{}", fileFolderNameList.size(), fileFolderNameSet.size());
-        fileFolderList = SortUtil.sortList(fileFolderList);
         for (String name : fileFolderNameList){
             LOGGER.info(name);
         }
@@ -68,7 +70,7 @@ public class FileCoreTest{
     */
     @Test
     public void getAllFilesInDirectoryTest(){
-        List<File> allFilesInDirectory = FileCore.getAllFilesInDirectory(directory);
+	List<File> allFilesInDirectory = FileCore.getAllFilesInDirectory("D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend");
         for (File file : allFilesInDirectory){
             LOGGER.info(file.getAbsolutePath());
         }
@@ -97,7 +99,7 @@ public class FileCoreTest{
 //        String pattern = ".+(.jpg|.mp4|.JPG|.ico|.mov|.gif|.png|.webm)$";
         String pattern = ".+(.jpg)$";
         List<File> filesInDirectoryByPattern = FileCore.getFilesInDirectoryByPattern(directory, pattern);
-        FileCore.printFileListAbsolutePath(filesInDirectoryByPattern);
+        PrintUtil.printFileSetAbsolutePath(filesInDirectoryByPattern);
     }
     
     
@@ -108,8 +110,11 @@ public class FileCoreTest{
     */
     @Test
     public void testFileCoreTest(){
-        List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern(directory, allPicExtensionPattern, ".+(\\\\images\\\\.+\\.jpg)$");
-        FileCore.printBussinessFileListAbsolutePath(filePartialPathByDirectoryPattern);
+//        List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern("D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend", allPicExtensionPattern, ".+(\\\\images\\\\.+\\.jpg)$");
+//	List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern("D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend", allPicExtensionPattern, ".+(\\\\images\\\\.+\\.jpg)$");
+//	List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern(directory, ".+(.jpg|.JPG|.jpeg|.JPEG|.png|.PNG|.gig|.GIF)$", ".+(\\images\\.+\\.jpg)$");
+	List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern(directory, ".+(.jpg|.JPG|.jpeg|.JPEG|.png|.PNG|.gig|.GIF)$", "(/images/)([^.]+)(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF)");
+        PrintUtil.printBussinessFileSetAbsolutePath(filePartialPathByDirectoryPattern);
     }
     
 }
