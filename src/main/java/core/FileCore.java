@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
@@ -103,18 +104,40 @@ public class FileCore{
      * 根据正则表达式在某个目录下获取文件
      * @author liuwen
      * @param directory
-     * @param pattern
+     * @param patternStr
      * @return
      */
-    public static List<File> getFilesInDirectoryByPattern(String directory, String pattern){
+    public static List<File> getFilesInDirectoryByPattern(String directory, String patternStr){
         List<File> fileList = new ArrayList<>();
         List<File> tempfileList = getAllFilesInDirectory(directory);
         for (File file : tempfileList){
-            if(Pattern.matches(pattern, file.getAbsolutePath())) {
+            if(Pattern.matches(patternStr, file.getAbsolutePath())) {
                 fileList.add(file);
             }
         }
         return fileList;
+    }
+    
+    /**
+     * 提取某个路径下所有文件及其子文件的部分路径
+     * @author liuwen
+     * @param directory
+     * @param picExtensionPatternStr 图片后缀
+     * @param patternStr 需要提取的路径正则
+     * @return
+     */
+    public static List<BussinessFile> getFilePartialPathByDirectoryPattern(String directory, String picExtensionPatternStr, String patternStr){
+        List<BussinessFile> bussinessFileList = new ArrayList<>();
+        List<File> fileList = getFilesInDirectoryByPattern(directory, picExtensionPatternStr);
+        Pattern pattern = Pattern.compile(patternStr);
+        for (File file : fileList){
+            Matcher matcher = pattern.matcher(file.getAbsolutePath());
+            if (matcher.find()){
+                BussinessFile bussinessFile = new BussinessFile(matcher.group(1), file);
+                bussinessFileList.add(bussinessFile);
+            }
+        }
+        return bussinessFileList;
     }
     
     
@@ -123,9 +146,23 @@ public class FileCore{
      * @author liuwen
      * @param fileList
      */
-    public static void printFileAbsolutePath(List<File> fileList) {
+    public static void printFileListAbsolutePath(List<File> fileList) {
         for (File file : fileList){
             LOGGER.info(file.getAbsolutePath());
         }
     }
+    
+    /**
+     * 输出bussinessFileList
+     * @author liuwen
+     * @param bussinessFileList
+     */
+    public static void printBussinessFileListAbsolutePath(List<BussinessFile> bussinessFileList) {
+        for (BussinessFile bussinessFile : bussinessFileList){
+            LOGGER.info(bussinessFile.toString());
+        }
+    }
+    
+    
+    
 }

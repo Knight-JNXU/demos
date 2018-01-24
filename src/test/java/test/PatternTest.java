@@ -7,8 +7,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.feilong.json.jsonlib.JsonUtil;
-
 /**
  * @author knightjxnu
  * @version 1.0
@@ -30,13 +28,11 @@ public class PatternTest{
     @Test
     public void getStringByPatternTest(){
         LOGGER.info(fileName);
-        Pattern pattern = Pattern.compile(".+(\\images\\).+(.jpg)$");
-        LOGGER.info(JsonUtil.format(pattern));
+        Pattern pattern = Pattern.compile(".+(\\\\images\\\\.+\\.jpg)$");
         Matcher matcher = pattern.matcher(fileName);
         if(matcher.find()) {
             LOGGER.info(matcher.group(1));
         }
-            
     }
     
 }

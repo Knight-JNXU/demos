@@ -1,5 +1,7 @@
 package test;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.feilong.core.util.SortUtil;
+import com.feilong.json.jsonlib.JsonUtil;
 
+import core.BussinessFile;
 import core.FileCore;
 
 /**
@@ -26,6 +30,11 @@ public class FileCoreTest{
     private static final Logger LOGGER = LoggerFactory.getLogger(FileCoreTest.class);
     
     private String directory = "D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend\\src\\main\\webapp\\images";
+    
+    private String allExtensionPattern = ".+(.jpg|.mp4|.JPG|.ico|.mov|.gif|.png|.webm)$";
+    
+    //所有图片拓展名
+    private String allPicExtensionPattern = ".+(.jpg|.JPG|.jpeg|.JPEG|.gif|.GIF|.png|.PNG)$";
     
     /**
     * TestCoreTest.
@@ -57,10 +66,8 @@ public class FileCoreTest{
     }
     
     
-    
-
     /**
-    * TestFileCoreTest.
+    * 找出目录下所有文件
     */
     @Test
     public void getAllFilesInDirectoryTest(){
@@ -74,7 +81,7 @@ public class FileCoreTest{
     
 
     /**
-    * TestFileCoreTest.
+    * 取出文件夹下所有文件的拓展名
     */
     @Test
     public void getFileSuffixInDirectoryTest(){
@@ -86,13 +93,25 @@ public class FileCoreTest{
     
 
     /**
-    * TestFileCoreTest.
+    * 找出拓展名是 .jpg|.mp4|.JPG|.ico|.mov|.gif|.png|.webm 的文件
     */
     @Test
     public void getFilesInDirectoryByPatternTest(){
         String pattern = ".+(.jpg|.mp4|.JPG|.ico|.mov|.gif|.png|.webm)$";
         List<File> filesInDirectoryByPattern = FileCore.getFilesInDirectoryByPattern(directory, pattern);
-        FileCore.printFileAbsolutePath(filesInDirectoryByPattern);
+        FileCore.printFileListAbsolutePath(filesInDirectoryByPattern);
+    }
+    
+    
+    
+
+    /**
+    * TestFileCoreTest.
+    */
+    @Test
+    public void testFileCoreTest(){
+        List<BussinessFile> filePartialPathByDirectoryPattern = FileCore.getFilePartialPathByDirectoryPattern(directory, allPicExtensionPattern, ".+(\\\\images\\\\.+\\.jpg)$");
+        FileCore.printBussinessFileListAbsolutePath(filePartialPathByDirectoryPattern);
     }
     
 }
