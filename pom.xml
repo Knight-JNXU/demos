@@ -23,8 +23,22 @@
 	
 	<repositories>
 		<repository>
-			<id>feilong-repository</id>
+			<!-- A unique identifier for a repository. -->
+			<id>feilong-platform-repository</id>
+
+			<!--Human readable name of the repository. -->
+			<name>feilong platform repository</name>
+
 			<url>https://raw.github.com/venusdrogon/feilong-platform/repository</url>
+			<releases>
+				<enabled>true</enabled>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</snapshots>
 		</repository>
 	</repositories>
 
@@ -43,25 +57,16 @@
 			<version>1.7.25</version>
 		</dependency>
 		
+		<!-- apache -->
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.7</version>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>3.17</version>
 		</dependency>
 		<dependency>
-		    <groupId>commons-beanutils</groupId>
-		    <artifactId>commons-beanutils</artifactId>
-		    <version>1.9.3</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-collections4</artifactId>
-		    <version>4.1</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>3.17</version>
 		</dependency>
 		
 		<!-- feilong -->
