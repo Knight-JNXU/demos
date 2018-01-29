@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import com.feilong.core.util.CollectionsUtil;
 
+import core.AnalysisCore;
 import core.BussinessFile;
 import core.FileCore;
 import core.FileIoCore;
@@ -49,8 +50,8 @@ public class CompleteTest{
     	     filePartialPathByDirectoryPattern.remove(usedPic);
     	 }
     	 
-    	 LOGGER.error("==========================================");
-    	 LOGGER.error("analysis");
+    	 LOGGER.info("==========================================");
+    	 LOGGER.info("analysis");
     	 PrintUtil.printBussinessFileSetAbsolutePath(filePartialPathByDirectoryPattern);
     	 PrintUtil.printBussinessFileSetTotalSize(filePartialPathByDirectoryPattern, 1024*1024l, "M", new DecimalFormat("0.000"));
     }
@@ -98,11 +99,27 @@ public class CompleteTest{
 	     filePartialPathByDirectoryPattern.remove(usedPic);
 	 }
 	 
-	 LOGGER.error("==========================================");
-	 LOGGER.error("analysis");
+	 LOGGER.info("==========================================");
+	 LOGGER.info("analysis");
 	 PrintUtil.printBussinessFileSetAbsolutePath(filePartialPathByDirectoryPattern);
 	 LOGGER.info("mobile");
 	 PrintUtil.printBussinessFileSetTotalSize(filePartialPathByDirectoryPattern, 1024*1024l, "M", new DecimalFormat("0.000"));
      }
+     
+     
+    @Test
+    public void getUselessPicListTest() throws Exception{
+	String analysisDirectory = "D:\\all\\code\\work1\\mainland-official-store\\speedo-store-frontend\\src\\main\\webapp";
+	String picReferenceFileExtensionPattern = ".+(\\.jsp|\\.css|\\.js)$";
+	String picReferencePathPattern = "(/images/)([^.]+)(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF)";
+	String picExtensionPattern = ".+(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF)$";
+	String picPathPattern = ".+(\\\\images\\\\.+(\\.jpg|\\.JPG|\\.jpeg|\\.JPEG|\\.png|\\.PNG|\\.gig|\\.GIF))$";
+	List<BussinessFile> filePartialPathByDirectoryPattern = AnalysisCore.getUselessPicList(analysisDirectory, picReferenceFileExtensionPattern, picReferencePathPattern, picExtensionPattern, picPathPattern);
+	LOGGER.info("==========================================");
+        LOGGER.info("analysis");
+        PrintUtil.printBussinessFileSetAbsolutePath(filePartialPathByDirectoryPattern);
+        LOGGER.info("pc");
+        PrintUtil.printBussinessFileSetTotalSize(filePartialPathByDirectoryPattern, 1024*1024l, "M", new DecimalFormat("0.000"));
+    }
      
 }
