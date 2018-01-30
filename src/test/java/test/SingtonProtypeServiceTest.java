@@ -44,15 +44,23 @@ public class SingtonProtypeServiceTest extends BaseJUnit4SpringContextTests{
     @Test
     public void testSingtonProtypeServiceTest() {
 	LOGGER.info("begin");
+	SingtonProtypeServiceImpl singtonService3 = singtonService1;
 	LOGGER.info("singtonService1.getName():{}", singtonService1.getName());
 	singtonService1.setName("feilong");
 	LOGGER.info("singtonService1.getName():{}", singtonService1.getName());
 	LOGGER.info("singtonService2.getName():{}", singtonService2.getName());
+	LOGGER.info("singtonService3.getName():{}", singtonService3.getName());
+	singtonService3.setName("sw");
+	LOGGER.info("singtonService1.getName():{}", singtonService1.getName());
 	LOGGER.info("=============================");
+	SingtonProtypeServiceImpl protypeService3 = protypeService1;
 	LOGGER.info("protypeService1.getName():{}", protypeService1.getName());
 	protypeService1.setName("feilong");
 	LOGGER.info("protypeService1.getName():{}", protypeService1.getName());
 	LOGGER.info("protypeService2.getName():{}", protypeService2.getName());
+	LOGGER.info("protypeService3.getName():{}", protypeService3.getName());
+	protypeService3.setName("sw");
+	LOGGER.info("protypeService3.getName():{}", protypeService3.getName());
 	LOGGER.info("end");
     }
     
