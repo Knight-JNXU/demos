@@ -1,5 +1,8 @@
 package code.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import code.service.SingtonProtypeService;
 
 /**
@@ -10,7 +13,15 @@ import code.service.SingtonProtypeService;
  */
 public class SingtonProtypeServiceImpl extends BaseServiceImpl implements SingtonProtypeService{
     
+    /** The Constant log. */
+    private static final Logger LOGGER = LoggerFactory.getLogger(SingtonProtypeServiceImpl.class);
+    
     private String name = "lw";
+    
+    public SingtonProtypeServiceImpl() {
+	super();
+	LOGGER.info("SingtonProtypeServiceImpl structuring");
+    }
 
     public String getName() {
         return name;

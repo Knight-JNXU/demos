@@ -21,6 +21,11 @@ public class SingtonProtypeServiceTest extends BaseJUnit4SpringContextTests{
     /** The Constant log. */
     private static final Logger LOGGER = LoggerFactory.getLogger(SingtonProtypeServiceTest.class);
     
+    public SingtonProtypeServiceTest() {
+	super();
+	LOGGER.info("SingtonProtypeServiceTest structuring");
+    }
+
     @Qualifier(value = "SingtonService")
     @Autowired
     private SingtonProtypeServiceImpl singtonService1;
@@ -38,6 +43,7 @@ public class SingtonProtypeServiceTest extends BaseJUnit4SpringContextTests{
 
     @Test
     public void testSingtonProtypeServiceTest() {
+	LOGGER.info("begin");
 	LOGGER.info("singtonService1.getName():{}", singtonService1.getName());
 	singtonService1.setName("feilong");
 	LOGGER.info("singtonService1.getName():{}", singtonService1.getName());
@@ -47,6 +53,7 @@ public class SingtonProtypeServiceTest extends BaseJUnit4SpringContextTests{
 	protypeService1.setName("feilong");
 	LOGGER.info("protypeService1.getName():{}", protypeService1.getName());
 	LOGGER.info("protypeService2.getName():{}", protypeService2.getName());
+	LOGGER.info("end");
     }
     
 }
