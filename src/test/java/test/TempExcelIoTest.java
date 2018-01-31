@@ -11,6 +11,8 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -86,14 +88,41 @@ public class TempExcelIoTest {
             LOGGER.info(""+physicalNumberOfCells2);
         }
     }
+    /**
+     * 获取行数.
+     */
+    @Test
+    public void getRowCountTest() throws Exception{
+	XSSFWorkbook xssfWorkbook = new XSSFWorkbook(new File("D:\\test2.xlsx"));
+	XSSFSheet sheetAt = xssfWorkbook.getSheetAt(0);
+	XSSFRow row = sheetAt.getRow(2);
+	int physicalNumberOfCells = row.getPhysicalNumberOfCells();
+	XSSFRow row2 = sheetAt.getRow(0);
+	float columnWidthInPixels = sheetAt.getColumnWidthInPixels(0);
+	LOGGER.info("columnOutlineLevel:{}", columnWidthInPixels);
+    }
     
     /**
      * 
      * @author knightjxnu
      */
     @Test
-    public void testTempExcelIoTest() {
-	
+    public void testTempExcelIoTest() throws Exception{
+	Set<String> sensitiveWordsSet = new HashSet<>();
+	XSSFWorkbook xssfWorkbook = new XSSFWorkbook(new File("D:\\test.xlsx"));
+        XSSFSheet sheetAt = xssfWorkbook.getSheetAt(0);
+        XSSFRow row = sheetAt.getRow(2);
+        int physicalNumberOfCells = row.getPhysicalNumberOfCells();
+        for(int columnNum=0; columnNum<physicalNumberOfCells; columnNum++) {
+            int maxRowNum = row.getRowNum();
+            for(int rowNum=3; rowNum<maxRowNum; rowNum++) {
+        	String word = ExcelFileIoCore.getCellStrValue(ExcelFileIoCore.getCellBySheetRanks(sheetAt, rowNum, columnNum));
+        	sensitiveWordsSet.add(word);
+            }
+        }
+        for (String word : sensitiveWordsSet) {
+	    LOGGER.info("word");
+	}
     }
     
 }
