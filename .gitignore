@@ -1,5 +1,7 @@
 /target/
-/.project
-/.classpath
-/.jsdtscope
-/.settings
+.settings
+.classpath
+.project
+/.idea/
+BaseSpring.iml
+

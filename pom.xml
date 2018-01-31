@@ -2,14 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.learn</groupId>
-	<artifactId>SpringPrototypePattern</artifactId>
+	<artifactId>SpringJavaMailSender</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<properties>
 		<!-- 指定spring版本 -->
-		<!-- <spring.version>4.3.7.RELEASE</spring.version> -->
-		<!-- <spring.version>4.2.0.RELEASE</spring.version> -->
 		<spring.version>5.0.2.RELEASE</spring.version>
 
 		<!-- 指定maven编译的java版本 -->
@@ -102,6 +100,11 @@
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-test</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
 		    <version>${spring.version}</version>
 		</dependency>
 
@@ -197,7 +200,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>SpringPrototypePattern</finalName>
+		<finalName>SpringJavaMailSender</finalName>
 		<plugins>
 			<!-- maven-compiler-plugin -->
 			<plugin>

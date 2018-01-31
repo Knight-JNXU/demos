@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * @date 2018年1月18日
  * @function :
  */
-@ContextConfiguration(locations = { "classpath*:spring/spring-conf.xml", "classpath*:spring/spring-service-conf.xml" })
+@ContextConfiguration(locations = { "classpath*:spring/spring-conf.xml", "classpath*:spring/spring-service-conf.xml", "classpath*:spring/spring-email-conf.xml" })
 public class BaseJUnit4SpringContextTests extends AbstractJUnit4SpringContextTests{
-
+    
 
 }

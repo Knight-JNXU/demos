@@ -25,11 +25,5 @@
 	      	</map>  
 	  	</property>  
 	</bean>
-	
-	<!-- SingtonProtypeService 单例 -->
-	<bean id="SingtonService" class="code.service.impl.SingtonProtypeServiceImpl" scope="singleton"></bean>
-	
-	<!-- SingtonProtypeService 原型 -->
-	<bean id="ProtypeService" class="code.service.impl.SingtonProtypeServiceImpl" scope="prototype"></bean>
 
 </beans>
