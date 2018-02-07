@@ -38,7 +38,8 @@ public class ExcelFileIoCore {
 		valueStr = cell.getStringCellValue();
 		break;
 	    case NUMERIC:
-		valueStr = (BLANK_STR + cell.getNumericCellValue());
+		cell.setCellType(CellType.STRING);
+		valueStr = (BLANK_STR + cell.getStringCellValue());
 		break;
 	    case FORMULA:
 		valueStr = cell.getCellFormula();

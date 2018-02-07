@@ -6,6 +6,8 @@ package test;
  * @function : 
  */
 
+import static com.feilong.core.util.CollectionsUtil.newLinkedHashSet;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -119,54 +121,33 @@ public class TempExcelIoTest {
 
     /**
      * 
-     * @author knightjxnu
+     * @throws Exception
      */
     @Test
     public void testTempExcelIoTest() throws Exception {
-	Set<String> sensitiveWordsSet = new HashSet<>();
-	XSSFWorkbook xssfWorkbook = new XSSFWorkbook(new File("D:\\test2.xlsx"));
+	Set<String> sensitiveWordSet = new HashSet<>();
+	XSSFWorkbook xssfWorkbook = new XSSFWorkbook(new File("D:\\test.xlsx"));
 	XSSFSheet sheetAt = xssfWorkbook.getSheetAt(0);
-
+	int lastRowNum = sheetAt.getLastRowNum();
 	int maxColumnNum = 10000;
 	for (int columnNum = 0; columnNum < maxColumnNum; columnNum += 2) {
-	    for (Row row : sheetAt) {
-		Cell cell = row.getCell(2);
+	    for (int rowNum = 3; rowNum <= lastRowNum; rowNum++) {
+		XSSFRow row = sheetAt.getRow(rowNum);
+		XSSFCell cell = row.getCell(columnNum);
 		if (Validator.isNotNullOrEmpty(cell)) {
 		    String word = ExcelFileIoCore.getCellStrValue(cell);
-		    LOGGER.info("word:{}", word);
-		} else {
-		    LOGGER.info("columnNum : {} break", columnNum);
-		    break;
+		    if(Validator.isNotNullOrEmpty(word)) {
+			sensitiveWordSet.add(word);
+		    }
+//		    System.out.println("columnNum:"+columnNum+",rowNum:"+rowNum+","+word);
 		}
 	    }
 	}
-
-	// int[] columnBreaks = sheetAt.getColumnBreaks();
-	// if (LOGGER.isInfoEnabled()) {
-	// LOGGER.info("columnBreaks:{}", columnBreaks);
-	// }
-	// int[] rowBreaks = sheetAt.getRowBreaks();
-	// if (LOGGER.isInfoEnabled()) {
-	// LOGGER.info("rowBreaks:{}", rowBreaks);
-	// }
-	// int physicalNumberOfRows = sheetAt.getPhysicalNumberOfRows();
-	// if (LOGGER.isInfoEnabled()) {
-	// LOGGER.info("physicalNumberOfRows:{}", physicalNumberOfRows);
-	// }
-
-	// XSSFRow row = sheetAt.getRow(2);
-	// for (int columnNum = 0; columnNum < physicalNumberOfCells; columnNum++) {
-	// int maxRowNum = row.getLastCellNum();
-	// for (int rowNum = 3; rowNum < maxRowNum; rowNum++) {
-	// String word = ExcelFileIoCore
-	// .getCellStrValue(ExcelFileIoCore.getCellBySheetRanks(sheetAt, rowNum,
-	// columnNum));
-	// sensitiveWordsSet.add(word);
-	// }
-	// }
-	// for (String word : sensitiveWordsSet) {
-	// LOGGER.info("word：{}", word);
-	// }
+	LOGGER.info("set size:{}", sensitiveWordSet.size());
+	for (String word : sensitiveWordSet) {
+//	    LOGGER.info(word);
+	    System.out.println(word);
+	}
     }
 
     @Test
