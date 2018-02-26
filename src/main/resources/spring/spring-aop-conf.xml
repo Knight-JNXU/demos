@@ -10,6 +10,6 @@
 	<aop:aspectj-autoproxy />
 
 	<!-- 扫描 -->
-	<context:component-scan base-package="code" />
+	<context:component-scan base-package="code.behavior" />
 	
 </beans>
