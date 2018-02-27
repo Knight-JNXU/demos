@@ -23,5 +23,5 @@ execution()是最常用的切点函数，其语法如下所示：
  
  **注意：**
  1.不受 spring 管理的 method aop 无效
- 2.
+ 2.使用 aop 的 controller service 等需要在 component-scan 或 bean 之前加上 <aop:aspectj-autoproxy />
  

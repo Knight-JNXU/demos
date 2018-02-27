@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class PersonBehavior {
     
-    
     /** The Constant log. */
     private static final Logger LOGGER = LoggerFactory.getLogger(PersonBehavior.class);
     

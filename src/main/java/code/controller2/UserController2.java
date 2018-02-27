@@ -1,4 +1,4 @@
-package code.controller;
+package code.controller2;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @version 1.0
  * @date 2018年2月26日
  */
-@RequestMapping("/user")
+@RequestMapping("/user2")
 @Controller
-public class UserController {
+public class UserController2 {
     
     /** The Constant log. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController2.class);
     
-    @RequestMapping("/login")
+    @RequestMapping("/login2")
     @ResponseBody
-    public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
-	LOGGER.info("login");
+    public String login2(HttpServletRequest request, HttpServletResponse response, Model model) {
+	LOGGER.info("login2");
 	return "登录成功";
     }
     

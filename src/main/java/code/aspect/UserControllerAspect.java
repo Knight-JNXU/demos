@@ -1,5 +1,6 @@
 package code.aspect;
 
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0
  * @date 2018年2月26日
  */
+@Aspect
 @Component
 public class UserControllerAspect {
     
@@ -17,7 +19,7 @@ public class UserControllerAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserControllerAspect.class);
     
     
-    @Before("execution(void code.controller.UserController.login(..))")
+    @Before("execution(java.lang.String code.controller.UserController.login(..))")
     public void beforeLogin() {
 	LOGGER.info("beforeLogin");
     }
