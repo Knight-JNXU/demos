@@ -4,7 +4,7 @@
 	<groupId>com.learn</groupId>
 	<artifactId>SpringAOP</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<properties>
 		<!-- 指定spring版本 -->
